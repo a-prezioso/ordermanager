@@ -1,0 +1,30 @@
+<div class="table-container">
+  <div>
+    <label for="orderStatusFilter">Filter by Order Status:</label>
+    <select id="orderStatusFilter" [(ngModel)]="orderStatusFilter" (change)="applyFilter()">
+      <option value="">All</option>
+      <option value="PENDING">PENDING</option>
+      <option value="COMPLETED">COMPLETED</option>
+      <option value="ERROR">ERROR</option>
+    </select>
+  </div>
+
+<table>
+    <thead>
+      <tr>
+        <th>Supplier Name</th>
+        <th>Order Number</th>
+        <th>Order Status</th>
+        <th>Order Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.supplierName }}</td>
+        <td>{{ order.orderNumber }}</td>
+        <td>{{ order.orderStatus }}</td>
+        <td>{{ order.orderName }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,110 @@
+{
+  "info": {
+    "_postman_id": "your_postman_id",
+    "name": "Order API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orderName\": \"Sample Order\", \"orderNumber\": 12345, \"orderStatus\": \"PENDING\", \"retry\": 0, \"supplier\": {\"id\": \"1\", \"name\": \"test\" }}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/orders/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "orders", "create"]
+        }
+      }
+    },
+    {
+      "name": "Update Order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orderName\": \"Updated Order\", \"orderNumber\": 12345, \"orderStatus\": \"COMPLETED\", \"retry\": 0}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/orders/update/{{orderId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "orders", "update", "{{orderId}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/orders/getOrders?status={{status}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "orders", "getOrders"],
+          "query": [
+            {
+              "key": "status",
+              "value": "{{status}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Start Plan",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/plans/start?depotId={{depotId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "plans",
+            "start"
+          ],
+          "query": [
+            {
+              "key": "depotId",
+              "value": "{{depotId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "depotId",
+      "value": "1"
+    }
+  ]
+}

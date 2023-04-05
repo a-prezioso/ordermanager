@@ -1,0 +1,41 @@
+logging:
+  file:
+    name: /monitor.log
+server:
+  forward-headers-strategy: native
+  port: 9090
+spring:
+  application:
+    name: monitor
+  boot:
+    admin:
+      monitor:
+        status-interval: 30000
+        status-lifetime: 30000
+      client:
+        url: http://localhost:9090
+        username: admin
+        password: admin
+        instance:
+          metadata:
+            user:
+              name: admin
+              password: admin
+  security:
+    user:
+      name: admin
+      password: admin
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+
+
+
+
